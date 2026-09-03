@@ -1,0 +1,8 @@
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+Pods/
+*.xcworkspace/xcuserdata/
+Secrets.xcconfig
+
