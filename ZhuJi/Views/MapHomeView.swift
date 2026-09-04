@@ -99,7 +99,7 @@ private struct MarkerBadge: View {
         }
     }
     private var categoryColor: Color {
-        switch item.category { case .food: .orange; case .sightseeing: .blue; case .city: .teal; case .shopping: .pink }
+        switch item.category { case .food: .orange; case .sightseeing: .blue; case .city: .teal; case .shopping: .pink; case .home: .purple }
     }
 }
 

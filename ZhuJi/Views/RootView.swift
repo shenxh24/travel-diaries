@@ -9,7 +9,7 @@ struct RootView: View {
             if accepted {
                 TabView(selection: $selectedTab) {
                     MapHomeView().tabItem { Label("足迹", systemImage: "map.fill") }.tag(0)
-                    TimelineView().tabItem { Label("时光轴", systemImage: "clock.fill") }.tag(1)
+                    MemoriesView().tabItem { Label("回忆", systemImage: "photo.stack.fill") }.tag(1)
                     StatisticsView().tabItem { Label("统计", systemImage: "chart.bar.fill") }.tag(2)
                     SettingsView().tabItem { Label("设置", systemImage: "gearshape.fill") }.tag(3)
                 }

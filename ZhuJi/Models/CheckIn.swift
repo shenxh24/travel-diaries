@@ -7,6 +7,7 @@ enum PlaceCategory: String, Codable, CaseIterable, Identifiable {
     case sightseeing = "景点"
     case city = "城市"
     case shopping = "购物"
+    case home = "住所"
 
     var id: String { rawValue }
     var symbol: String {
@@ -15,6 +16,7 @@ enum PlaceCategory: String, Codable, CaseIterable, Identifiable {
         case .sightseeing: "camera.fill"
         case .city: "building.2.fill"
         case .shopping: "bag.fill"
+        case .home: "house.fill"
         }
     }
 }
