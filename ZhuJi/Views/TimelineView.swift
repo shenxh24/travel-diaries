@@ -15,7 +15,11 @@ struct TimelineView: View {
         NavigationStack {
             Group {
                 if filtered.isEmpty {
-                    ContentUnavailableView(searchText.isEmpty ? "还没有足迹" : "没有找到足迹", systemImage: "map", description: Text(searchText.isEmpty ? "在地图中点击加号，留下第一条旅行记录。" : "试试搜索其他地点或文字。"))
+                    ContentUnavailableView(
+                        LocalizedStringKey(searchText.isEmpty ? "还没有足迹" : "没有找到足迹"),
+                        systemImage: "map",
+                        description: Text(LocalizedStringKey(searchText.isEmpty ? "在地图中点击加号，留下第一条旅行记录。" : "试试搜索其他地点或文字。"))
+                    )
                 } else {
                     List(filtered) { item in
                         Button { selected = item } label: { TimelineRow(item: item) }.buttonStyle(.plain)

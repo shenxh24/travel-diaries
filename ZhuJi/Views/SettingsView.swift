@@ -9,15 +9,25 @@ struct SettingsView: View {
     @State private var isExporting = false
     @State private var exportError: String?
     @AppStorage("globalSearchFallbackEnabled") private var globalSearchFallbackEnabled = true
+    @AppStorage("appLanguage") private var appLanguage = "zh-Hans"
 
     var body: some View {
         NavigationStack {
             Form {
+                Section("语言") {
+                    Picker("界面语言", selection: $appLanguage) {
+                        Text("简体中文").tag("zh-Hans")
+                        Text("English").tag("en")
+                    }
+                    .pickerStyle(.segmented)
+                    Text("语言更改会立即应用，您写下的地点和日记不会被翻译或修改。")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
                 Section("数据") {
                     LabeledContent("足迹数量", value: "\(checkIns.count)")
                     LabeledContent("照片数量", value: "\(checkIns.reduce(0) { $0 + $1.photos.count })")
                     Button { export() } label: {
-                        Label(isExporting ? "正在整理照片…" : "导出互动旅行网页", systemImage: isExporting ? "hourglass" : "square.and.arrow.up")
+                        Label(LocalizedStringKey(isExporting ? "正在整理照片…" : "导出互动旅行网页"), systemImage: isExporting ? "hourglass" : "square.and.arrow.up")
                     }.disabled(isExporting || checkIns.isEmpty)
                     Text("包含全部足迹、日记与照片，可离线打开并浏览幻灯片。")
                         .font(.caption).foregroundStyle(.secondary)
@@ -59,7 +69,7 @@ struct SettingsView: View {
             }
             .alert("导出失败", isPresented: Binding(get: { exportError != nil }, set: { if !$0 { exportError = nil } })) {
                 Button("好") { exportError = nil }
-            } message: { Text(exportError ?? "请稍后重试。") }
+            } message: { Text(LocalizedStringKey(exportError ?? "请稍后重试。")) }
         }
     }
     private func export() {

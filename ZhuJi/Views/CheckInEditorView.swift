@@ -35,7 +35,7 @@ struct CheckInEditorView: View {
                 Section("记录") {
                     TextField("地点名称", text: $checkIn.title)
                     Picker("分类", selection: $category) {
-                        ForEach(PlaceCategory.allCases) { Label($0.rawValue, systemImage: $0.symbol).tag($0) }
+                        ForEach(PlaceCategory.allCases) { Label(LocalizedStringKey($0.rawValue), systemImage: $0.symbol).tag($0) }
                     }
                     DatePicker("日期与时间", selection: $checkIn.createdAt)
                     TextField("写下当时的故事…", text: $checkIn.diary, axis: .vertical).lineLimit(4...12)
@@ -60,7 +60,7 @@ struct CheckInEditorView: View {
                     Section { Button("删除这条足迹", role: .destructive) { showDeleteConfirmation = true } }
                 }
             }
-            .navigationTitle(isNew ? "添加足迹" : "足迹详情")
+            .navigationTitle(LocalizedStringKey(isNew ? "添加足迹" : "足迹详情"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("取消") { if isNew { context.delete(checkIn) }; dismiss() } }

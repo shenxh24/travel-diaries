@@ -56,7 +56,7 @@ struct MapHomeView: View {
             }
             .alert("无法获取位置", isPresented: Binding(get: { locationService.errorMessage != nil }, set: { if !$0 { locationService.errorMessage = nil } })) {
                 Button("好") { locationService.errorMessage = nil }
-            } message: { Text(locationService.errorMessage ?? "请在系统设置中允许定位。") }
+            } message: { Text(LocalizedStringKey(locationService.errorMessage ?? "请在系统设置中允许定位。")) }
         }
     }
 

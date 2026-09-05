@@ -5,7 +5,7 @@ struct MemoriesView: View {
     var body: some View {
         VStack(spacing: 0) {
             Picker("回忆视图", selection: $section) {
-                ForEach(MemorySection.allCases) { Text($0.title).tag($0) }
+                ForEach(MemorySection.allCases) { Text(LocalizedStringKey($0.title)).tag($0) }
             }
             .pickerStyle(.segmented).padding(.horizontal).padding(.vertical, 10)
             Group {

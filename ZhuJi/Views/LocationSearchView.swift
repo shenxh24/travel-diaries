@@ -46,7 +46,7 @@ struct LocationSearchView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(SearchRegion.allCases) { item in
-                            Button(item.title) { region = item }
+                            Button(LocalizedStringKey(item.title)) { region = item }
                                 .buttonStyle(.borderedProminent).tint(region == item ? .teal : .gray.opacity(0.25))
                                 .foregroundStyle(region == item ? .white : .primary)
                         }
@@ -62,7 +62,7 @@ struct LocationSearchView: View {
             }
             .alert("搜索失败", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
                 Button("好") { errorMessage = nil }
-            } message: { Text(errorMessage ?? "请稍后重试。") }
+            } message: { Text(LocalizedStringKey(errorMessage ?? "请稍后重试。")) }
         }
     }
 

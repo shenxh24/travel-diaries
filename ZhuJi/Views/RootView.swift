@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RootView: View {
     @AppStorage("hasAcceptedPrivacy") private var accepted = false
+    @AppStorage("appLanguage") private var appLanguage = "zh-Hans"
     @State private var selectedTab = 0
 
     var body: some View {
@@ -18,6 +19,7 @@ struct RootView: View {
                 PrivacyWelcomeView { accepted = true }
             }
         }
+        .environment(\.locale, Locale(identifier: appLanguage))
     }
 }
 
@@ -34,7 +36,7 @@ private struct PrivacyWelcomeView: View {
             VStack(alignment: .leading, spacing: 14) {
                 Label("位置用于创建足迹和展示地图", systemImage: "location.fill")
                 Label("照片与日记仅保存在您的设备上", systemImage: "lock.fill")
-                Label("地图服务由百度地图提供", systemImage: "map")
+                Label("地图与地点搜索由 Apple 地图提供", systemImage: "map")
             }.padding().background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20))
             Spacer()
             Button("同意并开始") { accept() }

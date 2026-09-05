@@ -47,7 +47,7 @@ struct StatisticsView: View {
                 .font(.headline).foregroundStyle(.secondary)
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text(distanceValue).font(.system(size: 46, weight: .bold, design: .rounded))
-                Text(distanceUnit).font(.title3.bold()).foregroundStyle(.secondary)
+                Text(LocalizedStringKey(distanceUnit)).font(.title3.bold()).foregroundStyle(.secondary)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading).padding(22)
@@ -73,7 +73,7 @@ private struct StatCard: View {
         VStack(alignment: .leading, spacing: 12) {
             Image(systemName: symbol).font(.title2).foregroundStyle(color)
             Text(value).font(.system(size: 32, weight: .bold, design: .rounded))
-            Text(title).font(.subheadline).foregroundStyle(.secondary)
+            Text(LocalizedStringKey(title)).font(.subheadline).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading).padding(18)
         .background(.background, in: RoundedRectangle(cornerRadius: 18))

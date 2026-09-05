@@ -6,7 +6,12 @@ struct TravelCalendarView: View {
     @Query(sort: \CheckIn.createdAt) private var checkIns: [CheckIn]
     @State private var month = Date.now
     @State private var selectedDay: DaySelection?
-    private let calendar = Calendar.current
+    @Environment(\.locale) private var locale
+    private var calendar: Calendar {
+        var value = Calendar.current
+        value.locale = locale
+        return value
+    }
 
     var body: some View {
         NavigationStack {
@@ -106,7 +111,7 @@ private struct DailySummaryView: View {
         }
     }
     private func summary(_ title: String, _ value: String) -> some View {
-        VStack { Text(value).font(.headline); Text(title).font(.caption).foregroundStyle(.secondary) }.frame(maxWidth: .infinity)
+        VStack { Text(value).font(.headline); Text(LocalizedStringKey(title)).font(.caption).foregroundStyle(.secondary) }.frame(maxWidth: .infinity)
     }
 }
 

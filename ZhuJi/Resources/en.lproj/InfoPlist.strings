@@ -1,0 +1,3 @@
+"NSLocationWhenInUseUsageDescription" = "ZhuJi uses your location to create footprints and show your position on the map.";
+"NSCameraUsageDescription" = "ZhuJi uses the camera to add photos to your travel diary.";
+"NSPhotoLibraryUsageDescription" = "ZhuJi uses your photo library to add photos to your travel diary.";
